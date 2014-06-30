@@ -53,7 +53,8 @@ alias gba='git branch -a'
 compdef _git gba=git-branch
 alias gcount='git shortlog -sn'
 compdef gcount=git
-alias gcl='git config --list'
+alias gcfgl='git config --list'
+alias gcl='git clone'
 alias gcp='git cherry-pick'
 compdef _git gcp=git-cherry-pick
 alias glg='git log --stat --max-count=10'
@@ -79,6 +80,7 @@ alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
 #remove the gf alias
 #alias gf='git ls-files | grep'
+alias gf='git fetch'
 
 alias gpoat='git push origin --all && git push origin --tags'
 alias gmt='git mergetool --no-prompt'
