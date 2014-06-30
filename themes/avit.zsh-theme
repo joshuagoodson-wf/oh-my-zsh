@@ -1,7 +1,27 @@
 # AVIT ZSH Theme
 
+function _virtualenv_prompt_info {
+    [[ -n $(whence virtualenv_prompt_info) ]] && virtualenv_prompt_info
+}
+
+function _git_prompt_info {
+    [[ -n $(whence git_prompt_info) ]] && git_prompt_info
+}
+
+function _hg_prompt_info {
+    [[ -n $(whence hg_prompt_info) ]] && hg_prompt_info
+}
+
+PYENV_PROMPT_DEFAULT_VERSION=${PYENV_PROMPT_DEFAULT_VERSION:="system"}
+
+function _pyenv_prompt_info {
+    [[ -n $(whence pyenv_prompt_info) ]] && \
+        [[ "$(pyenv_prompt_info)" != "${PYENV_PROMPT_DEFAULT_VERSION}" ]] && \
+        echo "${ZSH_THEME_PYENV_PROMPT_PREFIX}$(pyenv_prompt_info)${ZSH_THEME_PYENV_PROMPT_SUFFIX}"
+}
+
 PROMPT='
-$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+$(_virtualenv_prompt_info) $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
 ▶ '
 
 PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
